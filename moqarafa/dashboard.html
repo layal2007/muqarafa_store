@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>لوحة المستخدم - مُقارفة</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header>
+    <img src="assets/logo.png" class="logo" />
+    <h1 id="welcomeMessage">مرحبا بك</h1>
+  </header>
+
+  <section class="sections">
+
+    <!-- 📚 القسم الأول: حسب الحالة المزاجية -->
+    <div class="section mood-section">
+      <h2>📚 اختيار الكتاب حسب الحالة المزاجية</h2>
+      <select id="moodSelector" onchange="showBooksByMood()">
+        <option value="">اختر الحالة المزاجية</option>
+        <option value="happy">سعيد</option>
+        <option value="sad">حزين</option>
+        <option value="calm">هادئ</option>
+        <option value="excited">متحمس</option>
+      </select>
+      <div id="moodBooksContainer" class="book-container"></div>
+    </div>
+
+    <!-- 💳 تجربة الشراء الوهمية -->
+    <section class="section fake-purchase">
+      <h3>💳 تجربة الشراء</h3>
+      <p>اضغطي الزر لتجربة كأنك اشتريتي من المتجر، وادخلي قسم المقايضة ✨</p>
+      <button onclick="markUserAsBuyer()">أشتري الآن (وهمي)</button>
+    </section>
+
+    <!-- 🤝 قسم المقايضة الأدبية -->
+    <div class="section exchange-section">
+      <h2>🤝 قسم المقايضة الأدبية</h2>
+      <p>هنا يمكن للمستخدمين تبادل الكتب مجانًا بشرط أنهم سبق واشتروا من المتجر.</p>
+
+      <!-- كتب المقايضة -->
+      <div id="exchangeBooksContainer" class="book-container"></div>
+
+      <!-- ✅ نموذج الإضافة (يظهر بعد الشراء فقط) -->
+      <div id="addExchangeForm" style="display: none; margin-top: 20px;">
+        <h3>📘 أضف كتابك للتبادل:</h3>
+        <input type="text" id="exchangeTitle" placeholder="اسم الكتاب" />
+        <input type="text" id="exchangeAuthor" placeholder="اسم المؤلف" />
+        <input type="text" id="exchangeCover" placeholder="رابط صورة الغلاف" />
+        <button onclick="addExchangeBook()">📤 إرسال الكتاب</button>
+      </div>
+    </div>
+
+    <!-- ✍️ الكتاب الحي -->
+    <div class="section live-author">
+      <h2>✍️ الكتاب الحي</h2>
+      <p>تواصل مباشر مع الكاتب واطلب توقيع خاص!</p>
+
+      <div class="author-selection">
+        <label for="selectedAuthor">اختر الكاتب:</label>
+        <select id="selectedAuthor">
+          <option value="buthaina">بثينة العيسى</option>
+          <option value="coelho">Paulo Coelho</option>
+          <option value="mustafa">مصطفى محمود</option>
+          <option value="mahfouz">نجيب محفوظ</option>
+        </select>
+      </div>
+
+      <div class="chat-box">
+        <h3>الدردشة مع الكاتب</h3>
+        <div id="chatLog" class="chat-log">
+          <p>✍️ الكاتب: مرحبًا! كيف يمكنني مساعدتك؟</p>
+        </div>
+        <input type="text" id="userMessage" placeholder="اكتب رسالتك..." />
+        <button onclick="sendMessage()">إرسال</button>
+      </div>
+    </div>
+
+  </section>
+</body>
+</html>
